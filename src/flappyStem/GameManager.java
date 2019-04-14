@@ -27,26 +27,7 @@ public class GameManager extends AbstractGame {
 
     @Override
     public void update(GameContainer gc, float dt) {
-        if (!gravityBlock) {
-            player.setY(player.getY() + gravity);
-        }  // gravity setting
-        if (gc.input.isKeyDown(KeyEvent.VK_SPACE)) {
-            new Thread(() ->
-            {
-                gravityBlock = true;
-                y = player.getY();
-                for (int i = 0; i < 30; i++) {
-                    y -= gravity;
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    player.setY(y);
-                }
-                gravityBlock = false;
-            }).start();
-        } // Jump
+
     }
 
     @Override
