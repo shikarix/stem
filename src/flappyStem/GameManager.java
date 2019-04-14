@@ -74,6 +74,8 @@ public class GameManager extends AbstractGame {
                 gravityBlock = false;
             }).start();
         } // Jump
+        if(player.getY() <=0 )player.setY(0);
+        if(player.getY() >= gc.heigth - player.getImg().h)player.setY(gc.heigth-player.getImg().h);
     }
 
     @Override
