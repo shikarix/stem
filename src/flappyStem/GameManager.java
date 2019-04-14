@@ -49,8 +49,38 @@ public class GameManager extends AbstractGame {
         } // Jump
     }
 
+    public boolean collision(Player A, Column B)
+    {
+        int objAminX = A.getX();
+        int objAmaxX = A.getX() + A.getImg().w;
+        int objAminY = A.getY();
+        int objAmaxY = A.getY() + A.getImg().h;
+
+        int objBminX = B.getX();
+        int objBmaxX = B.getX() + B.getImg().w;
+        int objBminY = B.getY();
+        int objBmaxY = B.getY() + B.getImg().h;
+
+        if (objAmaxX < objBminX || objAminX > objBmaxX) {
+            return false;
+        }
+        if (objAmaxY < objBminY || objAminY > objBmaxY) {
+            return false;
+        }return true;
+    }
+
     @Override
     public void render(GameContainer gc, Renderer r) {
+
+
+        if (collision(player,columnDown))
+        {
+            System.exit(222);
+        }
+        if (collision(player,columnUp))
+        {
+            System.exit(222);
+        }
 
         if (dynamicFonX < -800) {
             dynamicFonX = 800;
