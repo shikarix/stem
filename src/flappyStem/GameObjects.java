@@ -5,6 +5,8 @@ import Engine.gfx.Image;
 public abstract class GameObjects {
     private int x;
     private int y;
+    private int w;
+    private int h;
     private boolean visible;
     private Image img;
 
@@ -15,6 +17,22 @@ public abstract class GameObjects {
 
     public void setVisible(boolean visible) {
         this.visible = visible;
+    }
+
+    public int getW() {
+        return w;
+    }
+
+    public int getH() {
+        return h;
+    }
+
+    public void setW(int w) {
+        this.w = w;
+    }
+
+    public void setH(int h) {
+        this.h = h;
     }
 
     public int getX() {

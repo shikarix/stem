@@ -8,5 +8,7 @@ public class Column extends GameObjects {
         this.setImg(img);
         this.setX(x);
         this.setY(y);
+        this.setW(img.w);
+        this.setH(img.h);
     }
 }
