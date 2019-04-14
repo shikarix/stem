@@ -43,10 +43,16 @@ public class GameManager extends AbstractGame {
     public void update(GameContainer gc, float dt) {
         if(collision(player, columnUp))
         {
-            System.exit(0);
+            player = new Player(new Image("flappyStem/flappyPerson.png"), 50, 0, 1);
+            img = new Image("flappyStem/flappyFon.png");
+            columnUp = new Column(new Image("flappyStem/flappyColumn.png"), -100, -150);
+            columnDown = new Column(new Image("flappyStem/FlappyColumn.png"), -100, columnUp.getY() + 600);
         }
         if(collision(player, columnDown)){
-            System.exit(0);
+            player = new Player(new Image("flappyStem/flappyPerson.png"), 50, 0, 1);
+            img = new Image("flappyStem/flappyFon.png");
+            columnUp = new Column(new Image("flappyStem/flappyColumn.png"), -100, -150);
+            columnDown = new Column(new Image("flappyStem/FlappyColumn.png"), -100, columnUp.getY() + 600);
         }
         if (!gravityBlock) {
             player.setY(player.getY() + gravity);
