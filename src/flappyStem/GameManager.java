@@ -16,6 +16,7 @@ public class GameManager extends AbstractGame {
     private int gravity = 3;
     public int levelSpeed = 2;
     private int y;
+    private int x;
     private int dynamicFonX = 0;
 
     public GameManager() {
