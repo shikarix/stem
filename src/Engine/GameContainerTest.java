@@ -80,6 +80,6 @@ public class GameContainerTest implements Runnable {
 
     public static void main(String[] args) {
         GameContainerTest gc = new GameContainerTest();
-
+        System.out.println("Здравствуйте, Юрий Андреевич!");
     }
 }
