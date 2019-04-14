@@ -24,9 +24,36 @@ public class GameManager extends AbstractGame {
         columnUp = new Column(new Image("flappyStem/flappyColumn.png"), -100, -150);
         columnDown = new Column(new Image("flappyStem/FlappyColumn.png"), -100, columnUp.getY() + 600);
     }
+    public boolean collision(Player player, Column column) {
+        int obj_a_MinX = player.getX();
+        int obj_a_MaxX = player.getX() + player.getImg().w;
+        int obj_a_MinY = player.getY();
+        int obj_a_MaxY = player.getY() + player.getImg().h;
 
+        int obj_b_MinX = column.getX();
+        int obj_b_MaxX = column.getX() + column.getImg().w;
+        int obj_b_MinY = column.getY();
+        int obj_b_MaxY = column.getY() + column.getImg().h;
+
+        if (obj_a_MaxX < obj_b_MinX || obj_a_MinX > obj_b_MaxX) return false;
+        if (obj_a_MaxY < obj_b_MinY || obj_a_MinY > obj_b_MaxY) return false;
+        return true;
+    }
     @Override
     public void update(GameContainer gc, float dt) {
+        if(collision(player, columnUp))
+        {
+            player = new Player(new Image("flappyStem/flappyPerson.png"), 50, 0, 1);
+            img = new Image("flappyStem/flappyFon.png");
+            columnUp = new Column(new Image("flappyStem/flappyColumn.png"), -100, -150);
+            columnDown = new Column(new Image("flappyStem/FlappyColumn.png"), -100, columnUp.getY() + 600);
+        }
+        if(collision(player, columnDown)){
+            player = new Player(new Image("flappyStem/flappyPerson.png"), 50, 0, 1);
+            img = new Image("flappyStem/flappyFon.png");
+            columnUp = new Column(new Image("flappyStem/flappyColumn.png"), -100, -150);
+            columnDown = new Column(new Image("flappyStem/FlappyColumn.png"), -100, columnUp.getY() + 600);
+        }
         if (!gravityBlock) {
             player.setY(player.getY() + gravity);
         }  // gravity setting
@@ -51,6 +78,7 @@ public class GameManager extends AbstractGame {
 
     @Override
     public void render(GameContainer gc, Renderer r) {
+
 
         if (dynamicFonX < -800) {
             dynamicFonX = 800;
@@ -83,6 +111,7 @@ public class GameManager extends AbstractGame {
         else {
             player.setY(r.pH / 2);
         }
+
 
     }
 
